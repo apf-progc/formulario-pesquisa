@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- lang é para a linguagem do país -->
+<html lang="pt-br">
+
+<head>
+    <!-- faz com que a tela aceite caracteres especiais -->
+    <meta charset="UTF-8">
+    <!-- responsavel por identificar o tipo de tela que estamos usando, mas não é a responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- titulo da página-->
+    <title>Pesquisa de Satisfação</title>
+
+    <!-- inserindo arquivo css (stylesheet - comando que direciona o html realizar a interpretação do css)-->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!-- criando uma classe de stylo chamada container (main - parte principal do site) -->
+     <!-- o campo main usa-se . + o nome dentro da "" no css -->
+    <main class="container">
+        <h1>Pesquisa de Satisfação</h1>
+
+        <!-- class subtitulo é o nome empregado ao paragrafo para facilitar a formatação do css -->
+        <p class="subtitulo"> Leva menos de 2 minutos. Campos com * são de preenchimento obrigatório.</p>
+
+        <!-- novalidade desativa as configuraçãoes que são altomaticas dos navegadores ex: restrições de uso de @, número, entre outros -->
+        <form id="formPesquisa" action="processar.php" method="post" novalidate>
+
+            <!-- Nome -->
+            <!-- data-campo é para chamar o javascreipt usado para empregar um tipo de valor a algo  -->
+            <div class="campo" data-campo="nome">
+                <!-- O que o usuário ve fica no label -->
+                <label for="nome">Nome completo:* </label>
+                <!-- placeholder usado para inserir um comentário no campo -->
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome.">
+
+                <!-- aria-live="polite" refere-se ao item de acessibilidade e span usa-se para denominar os elementos-->
+                <span class="erro" id="erro-nome" aria-level="polite"></span>
+            </div>
+
+            <br>
+
+            <!-- E-mail-->
+            <!-- data-campo é para chamar o javascreipt usado para empregar um tipo de valor a algo  -->
+             <div class="campo" data-campo="email">
+                <!-- O que o usuário ve fica no label -->
+                <label for="email">E-mail:*</label>
+
+                <!-- os type, id, name e for devem ser igual e refere-se ao dado do campo que será inserido (como se sofe uma variavel) -->
+                <input type="email" id="email" name="email" placeholder="exemplo@gmail.com">
+
+                <!-- aria-live="polite" refere-se ao item de acessibilidade e span usa-se para denominar os elementos-->
+                <span class="erro" id="erro-email" aria-live="polite"></span>            
+             </div>
+
+             <br>
+
+             <!-- Idade -->
+             <!-- data-campo é para chamar o javascreipt usado para empregar um tipo de valor a algo  -->
+             <div class="campo" data-campo="idade">
+                <!-- O que o usuário ve fica no label -->
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" placeholder="Ex: 25">
+
+                <!-- aria-live="polite" refere-se ao item de acessibilidade e span usa-se para denominar os elementos-->
+                <span class="erro" id="erro-idade" aria-live="polite"></span>
+             </div>
+
+              <br>
+
+             <!-- Estado -->
+             <!-- data-campo é para chamar o javascreipt usado para empregar um tipo de valor a algo  -->
+             <div class="campo" data-campo="estado">
+
+                <!-- O que o usuário ve fica no label -->
+                <label for="estado">Estado:*</label>
+
+                <!-- usa o select e option quando o campo for suspenso e de escolha -->
+                <select id="estado" name="estado" required>
+                    <option value="">Selecione o Estado</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="AP">Amapá</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="CE">Ceará</option>
+                </select>
+                             
+                <!-- aria-live="polite" refere-se ao item de acessibilidade e span usa-se para denominar os elementos-->
+                <span class="erro" id="erro-estado" aria-live="polite"></span>
+             </div>
+
+             <!-- fieldset usado para escala de likert, borda da caixa-->
+             <fieldset class="campo" data-campo="nota">
+
+                <!-- pode configurar no css legend e label juntos, basta usa , entre as tag -->
+                <!-- usado para inserir informação| legenda -->
+                <legend>Qual nota você dá para o curso?</legend>
+
+                <div class="opcoes-nota">
+                                        <!-- informação empregadas aos radios -->
+                    <label><input type="radio" name="nota" value="1"><span>1</span></label>
+                    <label><input type="radio" name="nota" value="2"><span>2</span></label>
+                    <label><input type="radio" name="nota" value="3"><span>3</span></label>
+                    <label><input type="radio" name="nota" value="4"><span>4</span></label>
+                    <label><input type="radio" name="nota" value="5"><span>5</span></label>     
+                </div>
+                <span class="erro" id="erro-nota" aria-live="polite"></span>
+
+             </fieldset>
+
+             <!-- usao de checkbok -->
+              <fieldset class="campo" data-campo="origem">
+                <!--legenda do campo de multiplas escolhas--> 
+                <legend>Como você conheceu o curso?*(marque pelo menos uma das opções) </legend>
+                
+                <!-- inserindo informação junto com o campo de seleção. [] é usado como um vetor para que um conjunto de dados sejam armazenados juntos no banco. [] relacionar ao php, [] também faz com que todos os registros sejam armazenados, bisto que o tipo de elemento permite mais de uma respota-->
+                <label class="opcao"> <input type="checkbox" name="origem[]" value="indicacao">Indicação de amigos.</label>
+                <label class="opcao"> <input type="checkbox" name="origem[]" value="redes">Redes Sociais.</label>
+                <label class="opcao"> <input type="checkbox" name="origem[]" value="busca">Pesquisa na Internet .</label>
+                <label class="opcao"> <input type="checkbox" name="origem[]" value="outros">Outros Meios.</label>
+                <!-- aria-live="polite" refere-se ao item de acessibilidade e span usa-se para denominar os elementos-->
+                <span class="erro" id="erro-origem" aria-live="polite"></span>
+              </fieldset>
+
+              <div class="campo" data-campo="comentario">
+                <label for="comentario">Comentário:</label>
+                <!-- textarea é o campo destinada a textos longos. rows define quantidade de linhas, maxlength define quantidade de caracteres -->
+                <textarea id="comentario" name="comentario" rows="4" maxlength="300" placeholder="Deixe um comentário."></textarea>
+                <!-- realizando a contagem dos caracteres -->
+                <small class="contador"><span id="contador">0</span>/300 caracteres</small>
+                <span class="erro" id="erro-comentario" aria-live="polite"></span>
+              </div>
+
+              <!-- campo de aceite de termos -->
+              <div class="campo" data-campo="termos">
+                <label class="opcao"><input type="checkbox" id="termos" name="termos">Afirmo que estou de aconcordo com os termos.*</label>
+                <span class="erro" id="erro-termos" aria-live="polite"></span>
+            </div>
+            
+            <!-- criando um botão-->
+            
+            <button type="submit" class="botao">Enviar</button>
+
+          
+
+
+        </form>
+        <reset></reset>
+    </main>
+
+    <!-- Vinculando o arquivo javascritp. Esse arquivo é o a ultima coisa antes de fechar a tag body -->
+    <!-- <script src="script.js"></Script> -->
+</body>
+
+</html>
+
+
+<!-- DICIONÁRIO ou Glossário-->
+ <!-- aria-live="polite refere-se a acessibilidade -->
+ <!-- type é o mesmo que tipo -->
+<!-- tag span usa-do quando se quer confiurar algo pequeno -->
+<!-- usa form somente em formulário -->
+<!-- data-campo é para chamar o javascreipt, usado para empregar um tipo de valor a algo -->
+ <!-- atalho shift + alt + seta ou tag + o número de linhas que quer repetir  -->
+<!-- DIV é usado para separar dados|informações em "caixinas"-->
+<!-- span usado denominar os elementos -->
+<!-- type é o tipo de campo que será inserido na tela -->
+<!--reset usa-se para apagar os dados do formulário, deve tomar cuidado ao criar um botão para não usar a função errada -->
+<!-- placeholder inserir informação dentro de qualquer tipo de campo, menos quando usa-se checkbox e radio  -->

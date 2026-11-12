@@ -1,0 +1,244 @@
+/* Configurações gerais */
+/* *{} usado quando formatar todos os campos de um grupo especifico. Ou seja é valido para página toda*/
+
+/* aplica em toda a tela do HTML */
+* {
+    box-sizing: border-box;
+}
+
+/* trava de segurança, aplicado à todos os elementos que forem fica oculto na tela*/
+[hidden] { 
+    display: none !important;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f2;
+    margin: 0;
+    padding: 30px 15px;
+    color: #2d3748;
+}
+
+/* campo referente a tag  main class="container" do HTML*/
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* formatando o titul da página que está dentro da tag main */
+h1 {
+    margin: 0 0 5px;
+    color: #2b6cb0;
+}
+
+/* formatando class="subtitulo", usa-se . antes quando foi é um elemento criado criado */
+.subtitulo {
+    margin: 0 0 25px;
+    color: #718097;
+}
+
+/* formatando class="campo", usa-se . antes quando foi é um elemento criado criado */
+.campo {
+    margin-bottom: 20px;
+    border: none;
+    padding: 0;
+}
+
+/* usa-se , quando vai configurar  mais de um item juntos*/
+label, legend {
+    display: block;
+    /* formata a letra em negrito */
+    font-weight: bold;
+    margin-bottom: 6px;
+    padding: 0;
+}
+
+/* usado para formatar todos os comandos referentes aos campos que serão usados para insirir informações de uma unica vez */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select, 
+textarea {
+    width: 100%;
+    /* espaçamento nos campos */
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 2px solid #cbd5e0;
+    border-radius: 8px;
+    background: #fff;
+
+    /*usado o tempo de transição entre os componenes clicado pelo usuário. usado para responsividade*/
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* formatando a interação do campo descritivo*/
+textarea {
+    resize: vertical;
+}
+
+/* aplicando sobra nos campos */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3182ce;
+    /* forma sombra transparência */
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+}
+
+/* Estados de validaçãp. Iniciando a configuração os campos obrigatório*/
+/* usando . antes pois refere-se a elementos dentro de class */
+.campo.invalido input[type="text"],
+.campo.invalido input[type="email"],
+.campo.invalido input[type="number"],
+.campo.invalido select,
+.campo.invalido textarea {
+    border-color: #e53e3e;
+    /*cor de fundo */
+    background: #fff5f5;
+}
+
+.campo.valido input[type="text"],
+.campo.valido input[type="email"],
+.campo.valido input[type="number"],
+.campo.valido select,
+.campo.valido textarea {
+    /* cor da borda */
+    border-color: #38a169;
+    background: #fff5f5;
+}
+
+/* formatando tamanho da mansagem de erro */
+.erro {
+    display: block;
+    min-height: 18px;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    /* cordo texto */
+    color: #e53e3e;
+}
+
+/* tratamento do checkbox */
+.opcao {
+    display: flex;
+    /* centraliza elemento dentro da tag */
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    margin-bottom: 6px;
+    /* pointer muda o formato do cursor do mouse ao passa sobre o elemento */
+    cursor: pointer;
+}
+
+.opcoes-nota {
+    /* converte o radio em horizontal */
+    display: flex;
+    gap: 10px;
+}
+
+/* transformar o radio em formato de botão. usa-se - devido ser uma class. usa o nome da class mais o a tag*/
+.opcoes-nota label{
+    /* posição */
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* esconder o radio original, mais manter acessível pelo teclado */
+.opcoes-nota input{
+    position: absolute;
+    opacity: 0;
+}
+
+.opcoes-nota span {
+    display: block;
+    /* tamanho do radio */
+    width: 46px;
+    height: 46px;
+    /* altura da linha */
+    line-height: 42px;
+    /* alinhamento dos elementos */
+    text-align: center;
+    border: 2px solid #cbd5e0;
+    /* insere um campo de radio no número */ /* se remover os proxímos itens, o elemento fica quadrado*/
+    border-radius: 50%;
+    /* deixando o item em negrito */
+    font-weight: bold;
+    /*usado o tempo de transição entre os componenes clicado pelo usuário. usado para responsividade*/
+    transition: all 0.25;
+}
+
+/* hover faz com que ao passar o nome sobre o item, ocorra uma interação, podendo mudar de cor*/
+.opcoes-nota label:hover span{
+    border-color: #3182ce;
+}
+
+/* pintando a bolinha quando o usuário marca a nota (input type="checkbox")*/
+.opcoes-nota input:checked + span {
+    /* cor de fundo */
+    background: #3182ce; 
+    /*cor da borda  */
+    border-color: #3182ce;
+    color: #fff;
+}
+
+/* colocando sombra quando item receber o foco dado ao elemento*/
+.opcoes-nota input:focus-visible + span {
+    box-shadow: 0 0 0 3px rbga(49, 130, 206, 0.36);
+}
+
+/* configurar o campo de cor diferente caso falata informações  */
+.campo.invalido .opcoes-nota span {
+    border-color: red;
+}
+
+/* estilizando o contador */
+.contador {
+    display: block;
+    /* inserndo o elemento a esquerda */
+    text-align: right;
+    color: #718096;
+    margin-top: 4px;
+}
+
+.botao {
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    color: #fff;
+    background: #3182ce;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    /* formatando a transição de cores ao passar o mouse */
+    transition: background 0.2s;   
+}
+
+/* configurando a cor do botão para mudar ao passar em cima */
+.botao:hover {
+    background: red;
+    color: #2d3748;
+    font-weight: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+
+/* class é para o CSS e id JavaScript */
+/* EMPLODE é para unir todos em um unico campo */
+/* hover muda o campo, cursor muda o ponteiro do mouse */
+/* rem e px podem ser usados para alterar o tamanho da fonte */
+/* padding refere-se ao espaçamento entre os elementos 1 valor para cada lado */
+/* container é o campo todo "caixa" */
+/* no CSS varias formas de alinhar os elementos */
+/* usa . quando a formatação refere-se a um bloco dentro de uma DIV*/
+/* crtl + shift +  r força a limpeza da memória e a atualização do página/site*/
+/* para limpar a memoria das informações digitas para que não fique aparecendo, usa-se um bloqueio no javascrit */
+/* tabela de cores asci apresenta todos os códigos das cores. Tem hex e o rgba, no entanto, o mais indicado é o hex */
+/* a ordem do css não tem problema a ordem, mas  */
+/* O atributo checked é um atributo booleano no HTML que define se um elemento <input> (do tipo checkbox ou radio) deve vir marcado por padrão quando a página é carregada. */
